@@ -4,7 +4,7 @@ const port=8000;
 function requestHandler(req,res){
     console.log(req.url);
     res.writeHead(200,{'content-type':'text/html'});
-    res.end("<h1 style="+"color:red"+">Hey Yash! are you excited to learn Nodejs</h1>");
+    res.end("<h1>Hey Yash! are you excited to learn Nodejs</h1>");
 }
 
 const server=http.createServer(requestHandler);
