@@ -3,7 +3,8 @@ const port=8000;
 
 function requestHandler(req,res){
     console.log(req.url);
-    res.end("Hey Yash! are you excited to learn Nodejs");
+    res.writeHead(200,{'content-type':'text/html'});
+    res.end("<h1 style="+"color:red"+">Hey Yash! are you excited to learn Nodejs</h1>");
 }
 
 const server=http.createServer(requestHandler);
