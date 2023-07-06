@@ -5,10 +5,30 @@ const fs=require('fs');
 function requestHandler(req,res){
     console.log(req.url);
     res.writeHead(200,{'content-type':'text/html'});
-    fs.readFile('./index.html', function(err,data){
-        if(err){
-            console.log('error is :',err);
-            return res.end('<h1>Sorry! The Page you are looking is not there</h1>');
+
+    let filePath;
+
+    switch(req.url){
+        case '/s':
+            filePath='./index.html';
+            break;
+        
+        case '/404error':
+            filePath='./404error.html';
+            break;
+        
+        case '/profile':
+            filePath='./profile.html';
+            break;
+        default:
+            filePath='./default.html';
+            break;
+    }
+
+    fs.readFile(filePath,function(err,data){
+        if(err)
+        {
+            return res.end("<h1>Errorrrrrrrrrrrr!</h1>");
         }
         else{
             return res.end(data);
