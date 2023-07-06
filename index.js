@@ -1,10 +1,19 @@
 const http=require('http');
 const port=8000;
+const fs=require('fs');
 
 function requestHandler(req,res){
     console.log(req.url);
     res.writeHead(200,{'content-type':'text/html'});
-    res.end("<h1>Hey Yash! are you excited to learn Nodejs</h1>");
+    fs.readFile('./index.html', function(err,data){
+        if(err){
+            console.log('error is :',err);
+            return res.end('<h1>Sorry! The Page you are looking is not there</h1>');
+        }
+        else{
+            return res.end(data);
+        }
+    });
 }
 
 const server=http.createServer(requestHandler);
