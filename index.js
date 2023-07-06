@@ -23,5 +23,5 @@ server.listen(port,function(err){
         console.log('error');
         return;
     }
-    console.log("Server is up and running:",port);
+    console.log("Server is running on port:",port);
 });
